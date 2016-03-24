@@ -1,0 +1,93 @@
+<script>
+window.onload = function(){
+  
+  var theParent = parent.document.getElementsByTagName("body")[0];
+  var strVar="";
+  strVar += "<style type=\"text\/css\">";
+  strVar += ".modalDialog {";
+  strVar += "    position: absolute;";
+  strVar += "    top: 0px;";
+  strVar += "    left: 0px;";
+  strVar += "    bottom: 0px;";
+  strVar += "    right: 0px;";
+  strVar += "    height:100%;";
+  strVar += "    width:100%;";
+  strVar += "    z-index:999;";
+  strVar += "    background-color:rgba(255,255,255,0.8);";
+  strVar += "    margin: auto;";
+  strVar += "    display: block;";  
+  strVar += "}";
+
+  strVar += "#modal {";
+  strVar += " background-image: url(\"[%IMG%]\");";
+  strVar += " width: 829px;";
+  strVar += " height: 434px;";
+  strVar += " background-repeat: no-repeat;";
+  strVar += " position: absolute;";
+  strVar += " margin: auto;";
+  strVar += " z-index: 99999999;";  
+  strVar += " top: 0px;";
+  strVar += " left: 0px;";
+  strVar += " bottom: 0px;";
+  strVar += " right: 0px;";
+  strVar += "}";
+  strVar += ".fb_iframe_widget {";
+  strVar += " position: absolute;";
+  strVar += " bottom: 32px;";
+  strVar += " right: 10px;";
+  strVar += "}";
+  strVar += "<\/style>";
+  strVar += "<div id=\"fb-root\"><\/div>";
+
+  strVar += "<div class=\"modalDialog\" id=\"radarModal\">";
+  strVar += "  <div id=\"modal\">";
+  strVar += "  <div class=\"fb-page\" data-href=\"https:\/\/www.facebook.com\/radaronline\" data-width=\"350\" data-height=\"224\" data-small-header=\"false\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"true\" data-show-posts=\"false\"><div class=\"fb-xfbml-parse-ignore\"><blockquote cite=\"https:\/\/www.facebook.com\/radaronline\"><a href=\"https:\/\/www.facebook.com\/radaronline\">Radar Online<\/a><\/blockquote><\/div><\/div>";
+  strVar += "  <\/div>";
+  strVar += "<\/div>";
+  strVar += "";
+  var theBody = document.createElement("div");
+  theBody.innerHTML = strVar;
+  theParent.appendChild(theBody);
+
+  parent.document.querySelectorAll(".modalDialog").style.display = "block";
+
+// var newscript = document.createElement('script');
+//      newscript.type = 'text/javascript';
+//      newscript.async = true;
+//      newscript.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=784666091652597';
+//   (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
+//   theParent.appendChild(newscript);
+
+
+ window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '784666091652597',   // Your App ID
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+
+    FB.Canvas.setDoneLoading(function(){
+      var like_callback = function(response){
+        alert("Callback works");
+        document.querySelectorAll(".modalDialog")[0].style.display = "none";
+        document.querySelectorAll(".modalDialog")[1].style.display = "none";
+      }
+      FB.Event.subscribe('edge.create',like_callback);
+    });
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=784666091652597";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  };
+
+};
+
+
+</script>
+
+<!-- %%CLICK_URL_ESC%% -->
+<!-- %%VIEW_URL_UNESC%%, %%VIEW_URL_ESC%% -->

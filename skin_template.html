@@ -1,0 +1,38 @@
+<script type="text/javascript">
+		window.onload = function() {
+
+			var background_image = "%%FILE:PNG1%%";
+			//var background_image = "";
+			var link = "%%CLICK_URL_ESC%%http://www.pomwonderful.com/";
+			var impresion_tracker = "";
+
+			var theParent = parent.document.getElementsByTagName("body");
+			theParent = theParent[0];
+                        
+
+			var theKid = document.createElement("a");
+			theKid.setAttribute("id", "siteskin");
+			theKid.setAttribute("target", "_blank");
+			theKid.setAttribute("href", link);
+			theParent.insertBefore(theKid, theParent.firstChild);
+
+			var styles = document.createElement("style");
+			styles.setAttribute('type', 'text/css');
+
+			var content = '';
+
+			content += '#siteskin {';
+			content += 'display: block; position: fixed; z-index: 9; width: 100%; height: 1200px; cursor: pointer; background-position: 50%; background-repeat:no-repeat !important; background-image: url(" ' + background_image + '"); top: 54px;';
+			content += ' } ';
+            content += ' #leaderboard.in-move { width: 980px; left: 50%; margin-left: -490px;}';
+			styles.innerHTML = content;
+
+			theParent.insertBefore(styles, theParent.firstChild);
+
+			var trackingImg = document.createElement('img');
+			trackingImg.src = impresion_tracker;
+			theParent.append(trackingImg);
+		};
+</script>
+
+<img src="%%VIEW_URL_UNESC%%http://video.ami-admin.com/Adops/1x1_Pixel.jpg" border="0">
